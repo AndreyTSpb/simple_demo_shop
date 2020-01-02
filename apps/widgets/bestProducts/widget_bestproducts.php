@@ -9,8 +9,8 @@
 class Widget_BestProducts
 {
     static function widget(){
-                ob_start();
-                include "tp/index.php";
-                return ob_get_clean();
+        ob_start();
+        include "tp/index.php";
+        return ob_get_clean();
     }
 }
