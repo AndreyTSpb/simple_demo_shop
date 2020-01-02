@@ -16,6 +16,6 @@ Class Controller_Main extends Controller
     function action_index()
     {
         $data['title']         = "Home";
-        $this->view->generate('', 'index.php', $data);
+        $this->view->generate('main_view.php', 'index.php', $data);
     }
 }

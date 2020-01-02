@@ -41,6 +41,14 @@ spl_autoload_register(function ($className) {
             case 'class':
                 $folder = 'apps' . DS . 'classes';
                 break;
+            case 'widget':
+                /**
+                 * виджеты лежат в отдельных папках
+                 * имя виджета это имя папки
+                 */
+                $sub_folder = strtolower($expArr[1]);
+                $folder = 'apps' . DS . 'widgets' . DS . $sub_folder;
+                break;
         }
     }
     /**

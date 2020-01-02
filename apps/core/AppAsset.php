@@ -14,8 +14,9 @@
  */
 class AppAsset{
     private static $css = [
-        'web/css/bootstrap.min.css',
-        'web/css/carousel.css',
+        'css/bootstrap.min.css',
+        'css/carousel.css',
+        'css/pricing.css',
     ];
 
     /**
