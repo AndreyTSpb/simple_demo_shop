@@ -22,7 +22,12 @@ class AppAsset{
      * js files, ROOT/FOLDER/FILE
      */
     private static $js = [
-        'web/js/vasya.js',
+        'js/jquery-3.4.1.min.js',
+        'js/jquery-slim.min.js',
+        'js/bootstrap.min.js',
+        'js/popper.min.js',
+        'js/holder.min.js'
+
     ];
 
     /**
