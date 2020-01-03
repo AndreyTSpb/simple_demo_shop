@@ -8,7 +8,14 @@
 
 class Widget_Featurette
 {
-    static function widget($side){
+    /**
+     * @param $side - сторона с которой расположена картинка
+     * @param $title - Заголовок
+     * @param $text - Текст
+     * @param $img -  Картинка
+     * @return string - Возвращает  HTML код для вставки
+     */
+    static function widget($side, $title, $text, $img){
         switch ($side){
             case "left":
                 $file = "tp/left.php";

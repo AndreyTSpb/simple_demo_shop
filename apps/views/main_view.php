@@ -75,30 +75,26 @@
 
     <hr class="featurette-divider">
 
-    <?= Widget_Featurette::widget("right");?>
+    <?= Widget_Featurette::widget(
+            "right",
+            "Oh yeah, it's that good. <span class=\"text-muted\">See for yourself.</span>",
+            "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.",
+            "christmas_tree_v_3.png");?>
 
     <hr class="featurette-divider">
 
     <!-- Three columns of text below the carousel -->
     <div class="row">
-        <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
+        <?php $arr_tree_notes = array(
+                ["title"=>"Heading","text"=>"Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.","img"=>"green-clipart-christmas-1.png", "link"=>"#"],
+                ["title"=>"Heading","text"=>"Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.","img"=>"yellow-clipart-christmas-1.png", "link"=>"#"],
+                ["title"=>"Heading","text"=>"Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.","img"=>"red-clipart-christmas-1.png", "link"=>"#"],
+        );?>
+        <?php if(!empty($arr_tree_notes)):?>
+            <?php foreach ($arr_tree_notes as $note):?>
+                <?= Widget_TreeNotes::widget($note['title'], $note['text'], $note['img'], $note['link']);?>
+            <?php endforeach;?>
+        <?php endif;?>
     </div><!-- /.row -->
 
 
@@ -106,11 +102,19 @@
 
     <hr class="featurette-divider">
 
-    <?= Widget_Featurette::widget("left");?>
+    <?= Widget_Featurette::widget(
+            "left",
+            "Oh yeah, it's that good. <span class=\"text-muted\">See for yourself.</span>",
+            "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.",
+            "christmas_tree.png");?>
 
     <hr class="featurette-divider">
 
-    <?= Widget_Featurette::widget("right");?>
+    <?= Widget_Featurette::widget(
+            "right",
+            "Oh yeah, it's that good. <span class=\"text-muted\">See for yourself.</span>",
+            "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.",
+            "christmas_tree_v_2.png");?>
 
     <!-- /END THE FEATURETTES -->
 
