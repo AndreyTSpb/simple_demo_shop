@@ -66,11 +66,11 @@
 
     <!-- PRICING -->
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">Pricing</h1>
-        <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p>
+        <h1 class="display-4">Услуги</h1>
+        <p class="lead">Цены на Наши услуги.</p>
     </div>
 
-    <?= Widget_BestProducts::widget()?>
+    <?=Widget_BestProducts::widget()?>
     <!-- /END PRICING -->
 
     <hr class="featurette-divider">
@@ -108,6 +108,96 @@
             "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.",
             "christmas_tree.png");?>
 
+    <hr class="featurette-divider">
+    <!-- PRODUCTS -->
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Товары</h1>
+        <p class="lead">Цены на Наши товары.</p>
+    </div>
+    <div class="row">
+        <!-- Карточка с card-img-top -->
+        <div class="card box-shadow" style="max-width: 14rem;">
+            <!-- Изображение -->
+            <div class="m-3">
+                <img class="rounded mx-auto d-block" src="<?=DOCUMENT_STATIC.DS?>/images/yellow-clipart-christmas-1.png" width="140px" height="140px" alt="...">
+            </div>
+            <!-- Текстовый контент -->
+            <div class="card-body">
+                <h5 class="card-title text-center">Название карточки</h5>
+                <div class="price-box pt-2 pb-2">
+                    <span class="h3"><i class="fa fa-rub"></i> 135.20</span>
+                </div>
+                <div class="star">
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>
+                </div>
+                <div class="mt-1" style="position: absolute; bottom: 15px;">
+                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> To Card</a>
+                </div>
+            </div>
+        </div><!-- Конец карточки -->
+
+        <div class="card box-shadow ml-3" style="max-width: 14rem;">
+            <!-- Изображение -->
+            <div class="m-3">
+                <img class="rounded mx-auto d-block" src="<?=DOCUMENT_STATIC.DS?>/images/green-clipart-christmas-1.png" width="140px" height="140px" alt="...">
+            </div>
+            <!-- Текстовый контент -->
+            <div class="card-body">
+                <h5 class="card-title text-center">Название карточки</h5>
+                <div class="price-box pt-2 pb-2">
+                    <span class="h3"><i class="fa fa-rub"></i> 135.20</span>
+                </div>
+                <div class="star">
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>
+                </div>
+                <div class="mt-1" style="position: absolute; bottom: 15px;">
+                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> To Card</a>
+                </div>
+            </div>
+        </div><!-- Конец карточки -->
+
+        <div class="card box-shadow ml-3" style="max-width: 14rem;">
+            <!-- Изображение -->
+            <div class="m-3">
+                <img class="rounded mx-auto d-block" src="<?=DOCUMENT_STATIC.DS?>/images/red-clipart-christmas-2.png" width="140px" height="140px" alt="...">
+            </div>
+            <!-- Текстовый контент -->
+            <div class="card-body">
+                <h5 class="card-title text-center">Название карточки</h5>
+                <div class="price-box pt-2 pb-2">
+                    <span class="h3"><i class="fa fa-rub"></i> 135.20</span>
+                </div>
+                <div class="star">
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>
+                </div>
+                <div class="mt-1" style="position: absolute; bottom: 15px;">
+                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> To Card</a>
+                </div>
+            </div>
+        </div><!-- Конец карточки -->
+
+        <!-- Карточка с card-img-bottom -->
+        <div class="card box-shadow ml-3" style="max-width: 14rem;">
+            <!-- Изображение -->
+            <div class="m-3">
+                <img class="rounded mx-auto d-block" src="<?=DOCUMENT_STATIC.DS?>/images/blue-clipart-christmas-1.png" width="140px" height="140px" alt="...">
+            </div>
+            <!-- Текстовый контент -->
+            <div class="card-body">
+                <h5 class="card-title text-center">Название карточки</h5>
+                <div class="price-box pt-2 pb-2">
+                    <span class="h3"><i class="fa fa-rub"></i> 135.20</span>
+                </div>
+                <div class="star">
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>
+                </div>
+                <div class="mt-1" style="position: absolute; bottom: 15px;">
+                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> To Card</a>
+                </div>
+            </div>
+        </div><!-- Конец карточки -->
+    </div>
+    <!-- END PRODUCTS -->
     <hr class="featurette-divider">
 
     <?= Widget_Featurette::widget(

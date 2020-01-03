@@ -17,6 +17,7 @@ class AppAsset{
         'css/bootstrap.min.css',
         'css/carousel.css',
         'css/pricing.css',
+        'css/font-awesome.css'
     ];
 
     /**
