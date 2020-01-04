@@ -115,87 +115,13 @@
         <p class="lead">Цены на Наши товары.</p>
     </div>
     <div class="row">
-        <!-- Карточка с card-img-top -->
-        <div class="card box-shadow" style="max-width: 14rem;">
-            <!-- Изображение -->
-            <div class="m-3">
-                <img class="rounded mx-auto d-block" src="<?=DOCUMENT_STATIC.DS?>/images/yellow-clipart-christmas-1.png" width="140px" height="140px" alt="...">
-            </div>
-            <!-- Текстовый контент -->
-            <div class="card-body">
-                <h5 class="card-title text-center">Название карточки</h5>
-                <div class="price-box pt-2 pb-2">
-                    <span class="h3"><i class="fa fa-rub"></i> 135.20</span>
-                </div>
-                <div class="star">
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>
-                </div>
-                <div class="mt-1" style="position: absolute; bottom: 15px;">
-                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> To Card</a>
-                </div>
-            </div>
-        </div><!-- Конец карточки -->
-
-        <div class="card box-shadow ml-3" style="max-width: 14rem;">
-            <!-- Изображение -->
-            <div class="m-3">
-                <img class="rounded mx-auto d-block" src="<?=DOCUMENT_STATIC.DS?>/images/green-clipart-christmas-1.png" width="140px" height="140px" alt="...">
-            </div>
-            <!-- Текстовый контент -->
-            <div class="card-body">
-                <h5 class="card-title text-center">Название карточки</h5>
-                <div class="price-box pt-2 pb-2">
-                    <span class="h3"><i class="fa fa-rub"></i> 135.20</span>
-                </div>
-                <div class="star">
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>
-                </div>
-                <div class="mt-1" style="position: absolute; bottom: 15px;">
-                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> To Card</a>
-                </div>
-            </div>
-        </div><!-- Конец карточки -->
-
-        <div class="card box-shadow ml-3" style="max-width: 14rem;">
-            <!-- Изображение -->
-            <div class="m-3">
-                <img class="rounded mx-auto d-block" src="<?=DOCUMENT_STATIC.DS?>/images/red-clipart-christmas-2.png" width="140px" height="140px" alt="...">
-            </div>
-            <!-- Текстовый контент -->
-            <div class="card-body">
-                <h5 class="card-title text-center">Название карточки</h5>
-                <div class="price-box pt-2 pb-2">
-                    <span class="h3"><i class="fa fa-rub"></i> 135.20</span>
-                </div>
-                <div class="star">
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>
-                </div>
-                <div class="mt-1" style="position: absolute; bottom: 15px;">
-                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> To Card</a>
-                </div>
-            </div>
-        </div><!-- Конец карточки -->
-
-        <!-- Карточка с card-img-bottom -->
-        <div class="card box-shadow ml-3" style="max-width: 14rem;">
-            <!-- Изображение -->
-            <div class="m-3">
-                <img class="rounded mx-auto d-block" src="<?=DOCUMENT_STATIC.DS?>/images/blue-clipart-christmas-1.png" width="140px" height="140px" alt="...">
-            </div>
-            <!-- Текстовый контент -->
-            <div class="card-body">
-                <h5 class="card-title text-center">Название карточки</h5>
-                <div class="price-box pt-2 pb-2">
-                    <span class="h3"><i class="fa fa-rub"></i> 135.20</span>
-                </div>
-                <div class="star">
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>
-                </div>
-                <div class="mt-1" style="position: absolute; bottom: 15px;">
-                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> To Card</a>
-                </div>
-            </div>
-        </div><!-- Конец карточки -->
+        <?php $arr_best_prod = array(
+            ["title"=>"Product 1","price"=>123,"img"=>"green-clipart-christmas-1.png", "id"=>"#"],
+            ["title"=>"Product 2","price"=>231,"img"=>"yellow-clipart-christmas-1.png", "id"=>"#"],
+            ["title"=>"Product 3","price"=>432,"img"=>"red-clipart-christmas-1.png", "id"=>"#"],
+            ["title"=>"Product 4","price"=>332,"img"=>"blue-clipart-christmas-1.png", "id"=>"#"],
+        );?>
+        <?= Widget_FourProducts::widget($arr_best_prod)?>
     </div>
     <!-- END PRODUCTS -->
     <hr class="featurette-divider">
