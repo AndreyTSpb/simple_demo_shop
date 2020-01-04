@@ -114,12 +114,12 @@
         <h1 class="display-4">Товары</h1>
         <p class="lead">Цены на Наши товары.</p>
     </div>
-    <div class="row">
+    <div class="row" id="four_product">
         <?php $arr_best_prod = array(
-            ["title"=>"Product 1","price"=>123,"img"=>"green-clipart-christmas-1.png", "id"=>"#"],
-            ["title"=>"Product 2","price"=>231,"img"=>"yellow-clipart-christmas-1.png", "id"=>"#"],
-            ["title"=>"Product 3","price"=>432,"img"=>"red-clipart-christmas-1.png", "id"=>"#"],
-            ["title"=>"Product 4","price"=>332,"img"=>"blue-clipart-christmas-1.png", "id"=>"#"],
+            ["title"=>"Product 1","price"=>123,"img"=>"green-clipart-christmas-1.png", "id"=>"1"],
+            ["title"=>"Product 2","price"=>231,"img"=>"yellow-clipart-christmas-1.png", "id"=>"2"],
+            ["title"=>"Product 3","price"=>432,"img"=>"red-clipart-christmas-1.png", "id"=>"3"],
+            ["title"=>"Product 4","price"=>332,"img"=>"blue-clipart-christmas-1.png", "id"=>"4"],
         );?>
         <?= Widget_FourProducts::widget($arr_best_prod)?>
     </div>

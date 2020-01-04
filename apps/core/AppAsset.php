@@ -28,7 +28,8 @@ class AppAsset{
         'js/jquery-slim.min.js',
         'js/bootstrap.min.js',
         'js/popper.min.js',
-        'js/holder.min.js'
+        'js/holder.min.js',
+        'js/custom/add_product_to_cart.js'
 
     ];
 
