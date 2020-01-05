@@ -51,6 +51,9 @@
                 <?php else:?>
                     <a class="btn btn-primary" href="<?=DOCUMENT_ROOT.DS?>signout">Sign out</a>
                 <?php endif;?>
+                <!-- BUTTON SHOP-CART -->
+                <a class="btn btn-circle" href="#" id="shopping-cart"><i class="fa fa-shopping-basket"></i> </a>
+                <!-- /END BUTTON SHOP-CART -->
             </div>
         </nav>
     </header>
@@ -97,6 +100,10 @@
             </div>
         </footer>
     </main>
+
+    <!--SHOP-CART -->
+    <?php include 'apps/views/cart.php';?>
+    <!-- /END SHOP-CART -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

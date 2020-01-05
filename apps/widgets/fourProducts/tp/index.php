@@ -6,7 +6,7 @@
  * Time: 22:30
  */
 ?>
-<div class="card box-shadow col-3" style="max-width: 18rem;">
+<div class="card box-shadow col-12 col-lg-3" style="max-width: 18rem;">
     <!-- Изображение -->
     <div class="m-3">
         <img class="rounded mx-auto d-block" src="<?=DOCUMENT_STATIC.DS?>images<?=DS.$img?>" width="140px" height="140px" alt="...">

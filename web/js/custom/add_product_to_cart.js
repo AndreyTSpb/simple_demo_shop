@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if(flag_add === 1) products.push(product); //если флаг равен 1 то это добавление нового товара в массив
 
                 document.cookie = 'cart='+JSON.stringify(products); // обновляем куку с корзиной
+
             }else{
                 //если кука пустая то просто добавляем
                 products.push(product);
