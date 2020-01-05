@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
          products = "";
 
     /**
-     * Проверка есть ли чего нибуть в куках корзины
+     * Проверка есть ли чего нибуть в куках корзины,
+     * если есть заполняем глобальную переменную  products
      */
     function testCart() {
 
@@ -24,7 +25,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 cart = arr_cookie[key].split('=');
             }
         });
-        if(cart[1].length > 0){
+        console.log(cart.length);
+        if(cart.length > 0){
             products = JSON.parse(cart[1]);
             //console.log(products);
             return true;
@@ -32,11 +34,19 @@ document.addEventListener("DOMContentLoaded", function() {
         return false;
     }
 
+    /**
+     * Отсюда запускаем все функции для посмотра и управления корзиной
+     */
     function showCart() {
+        //если карзина не пуста то можно ее показать
+        if(testCart()) {  //проверяем куки и если они есть заполняем корзину
 
-        getCart();
+            removeItem(); // функция для удаления ненужного товара
 
-        openCart();
+            getCart();   // заполняем модалку перебранным массивом из корзины
+
+            openCart();  // показывем корзину
+        }
 
         /**
          * Закрываем корзину при нажатии кнопки Закрыть или Х
@@ -71,7 +81,10 @@ document.addEventListener("DOMContentLoaded", function() {
             cart_modal.classList.remove('show');
 
             // удаляем затемнение
-            removeModalBackdrop();
+            if(document.getElementsByClassName('modal-backdrop')[0]){
+                removeModalBackdrop();
+            }
+
         }, time);
     }
 
@@ -123,8 +136,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         let templateProductItem = document.getElementById('product-template').innerHTML,
             compiled = _.template(templateProductItem),
-            html = '';
-        $('#list-products').html("");
+            html = '',
+            list_products = document.getElementById('list-products'),
+            summ_price = 0;
+
+        list_products.innerHTML = "";
         products.forEach(function(product) {
             let data = {
                 id: product.id,
@@ -133,11 +149,56 @@ document.addEventListener("DOMContentLoaded", function() {
                 price: product.price,
                 qrt: product.qrt
             }
+            summ_price += +product.qrt * +product.price;
             html += compiled(data);
         });
-        console.log(html);
         $('#list-products').append(html);
+        document.getElementById('itog').textContent = summ_price;
     }
+
+    /**
+     * Удаление из корзины,
+     * 1) Вешаем слушателя и все тело modal-body id="cart-body"
+     * 2) ловим нажатие по красному кресту с классом "btn-del_product-to-catr"
+     * 3) получаем из атрибута "data-id", айди товара
+     * 4) Отыскиваем его в куках корзины и удаляем
+     * 5) удаляем всю строчку
+     * 6)
+     */
+    function removeItem() {
+        let cartBody = document.getElementById('cart-body'),
+            remove_item;
+
+        cartBody.addEventListener('click', function (e) {
+            let target = e.target;
+            if(target && target.classList.contains('btn-del_product-to-cart')){
+                e.preventDefault();
+                //получаем айди продукта
+                let id = target.getAttribute('data-id');
+                products.forEach(function (product, key) {
+
+                    if(product.id === id){
+
+                        //запоминаем ключ удаляемого элемента
+                        remove_item = key;
+
+                    }
+
+                });
+
+                //удаляем ненужный элемент из масива продуктов
+                products.splice(remove_item,1);
+
+                //закидываем масив в куки
+                document.cookie = 'cart='+JSON.stringify(products); // обновляем куку с корзиной
+
+                // удаляем строчку из визуального отображения
+                let rem_row = document.getElementById("row-"+id);
+                rem_row.parentNode.removeChild(rem_row);
+            }
+        });
+    }
+    
 
     /**
      * кнопка для вызова корзины

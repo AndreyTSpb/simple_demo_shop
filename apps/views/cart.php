@@ -41,7 +41,7 @@
                     <li class="list-group-item list-group-item-secondary">
                         <div class="row flex-row-reverse">
                             <div class="col-6">
-                                <strong>ИТОГО :</strong>  <span class="itog">4343</span> <i class="fa fa-rub"></i>
+                                <strong>ИТОГО :</strong>  <span class="itog" id="itog"></span> <i class="fa fa-rub"></i>
                             </div>
                         </div>
                     </li>
@@ -58,7 +58,7 @@
 
 <!-- HTML template for products -->
 <script id="product-template" type="text/template">
-    <li class="list-group-item">
+    <li class="list-group-item" id="row-<%= id %>">
         <div class="row">
             <div class="col-2">
                 <img src="<?=DOCUMENT_STATIC.DS?>images/<%= img %>" width="35px" height="35px">
@@ -67,10 +67,10 @@
                 <%= name %>
             </div>
             <div class="col-3">
-                qnt <%= price %> руб.
+                <%= qrt %> x <%= price %> <i class="fa fa-rub"></i>
             </div>
             <div class="col-2 text-center text-danger h4">
-                <a class="btn-del_product-to-catr" data-id="<%= id %>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                <i class="fa fa-times btn-del_product-to-cart cursor-pointer" data-id="<%= id %>" aria-hidden="true"></i>
             </div>
         </div>
     </li>
