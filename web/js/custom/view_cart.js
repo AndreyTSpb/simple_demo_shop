@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
     //Создаем глобальную переменную с корзиной чтобы 10 раз не вызывать ее
-    let  cart = document.querySelector('#modal-shop-cart');
+    let  cart_modal = document.querySelector('#modal-shop-cart'),
+         products = "";
 
     /**
      * Проверка есть ли чего нибуть в куках корзины
-     * @returns {boolean}
      */
     function testCart() {
 
@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
         if(cart[1].length > 0){
+            products = JSON.parse(cart[1]);
+            //console.log(products);
             return true;
         }
         return false;
@@ -32,13 +34,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function showCart() {
 
+        getCart();
+
         openCart();
 
         /**
          * Закрываем корзину при нажатии кнопки Закрыть или Х
          * у всех элементов закрывающих корзину класс сlose-сart
          */
-        cart.addEventListener('click', function (event) {
+        cart_modal.addEventListener('click', function (event) {
             let target = event.target;
             if(target && target.classList.contains('close-cart')) {
                 closeCart(1);
@@ -49,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
          * закрываем корзину автоматически если она еще открыта
          * для проверки смотрим есть ли у корзины класс SHOW
          */
-         if(!cart.classList.contains('show')) closeCart(10000);
+         if(!cart_modal.classList.contains('show')) closeCart(10000);
     }
 
     /**
@@ -63,8 +67,8 @@ document.addEventListener("DOMContentLoaded", function() {
     function closeCart(time) {
         setTimeout(function () {
             //$('#modal-shop-cart').modal('hide');
-            cart.style.display = 'none';
-            cart.classList.remove('show');
+            cart_modal.style.display = 'none';
+            cart_modal.classList.remove('show');
 
             // удаляем затемнение
             removeModalBackdrop();
@@ -81,8 +85,8 @@ document.addEventListener("DOMContentLoaded", function() {
      */
     function openCart() {
         //$('#modal-shop-cart').modal('show');
-        cart.style.display = 'block';
-        cart.classList.add('show');
+        cart_modal.style.display = 'block';
+        cart_modal.classList.add('show');
         //добавляем затемнение
         createModalBackdrop();
     }
@@ -105,6 +109,37 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     /**
+     * Выборка из куки корзины
+     *
+     */
+    function getCart() {
+        /**
+         *[
+         *  {"id":"2","name":"Product 2","img":"yellow-clipart-christmas-1.png","price":"231","qrt":2},
+         *  {"id":"4","name":"Product 4","img":"blue-clipart-christmas-1.png","price":"332","qrt":1},
+         *  {"id":"3","name":"Product 3","img":"red-clipart-christmas-1.png","price":"432","qrt":1}
+         * ]
+         */
+
+        let templateProductItem = document.getElementById('product-template').innerHTML,
+            compiled = _.template(templateProductItem),
+            html = '';
+        $('#list-products').html("");
+        products.forEach(function(product) {
+            let data = {
+                id: product.id,
+                name: product.name,
+                img: product.img,
+                price: product.price,
+                qrt: product.qrt
+            }
+            html += compiled(data);
+        });
+        console.log(html);
+        $('#list-products').append(html);
+    }
+
+    /**
      * кнопка для вызова корзины
      * Можно прицепить к любому элементу
      * его оригинальный вызов отключаетмся
@@ -112,9 +147,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let btn_sh_cart = document.getElementById('shopping-cart');
 
-    //if(testCart()) {
-    //    btn_sh_cart.style.color = "red";
-    //}
+    if(testCart()) {
+        btn_sh_cart.style.color = "red";
+    }
 
     if(btn_sh_cart){
         btn_sh_cart.addEventListener('click', function (e) {

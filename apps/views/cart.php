@@ -35,44 +35,13 @@
                         </div>
                     </li>
                     <!-- List products -->
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-2">
-                                <img src="<?=DOCUMENT_STATIC.DS?>images/blue-clipart-christmas-1.png" width="35px" height="35px">
-                            </div>
-                            <div class="col-5">
-                                name
-                            </div>
-                            <div class="col-3">
-                                sum * qnt
-                            </div>
-                            <div class="col-2">
-                                X
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-2">
-                                <img src="<?=DOCUMENT_STATIC.DS?>images/blue-clipart-christmas-1.png" width="35px" height="35px">
-                            </div>
-                            <div class="col-5">
-                                name
-                            </div>
-                            <div class="col-3">
-                                sum * qnt
-                            </div>
-                            <div class="col-2">
-                                X
-                            </div>
-                        </div>
-                    </li>
+                    <i id="list-products"></i>
                     <!-- /End List products -->
                     <!-- Itog -->
                     <li class="list-group-item list-group-item-secondary">
                         <div class="row flex-row-reverse">
                             <div class="col-6">
-                                <strong>ИТОГО :</strong> <i class="fa fa-rub"></i> <span class="itog">4343</span>
+                                <strong>ИТОГО :</strong>  <span class="itog">4343</span> <i class="fa fa-rub"></i>
                             </div>
                         </div>
                     </li>
@@ -86,3 +55,23 @@
         </div>
     </div>
 </div>
+
+<!-- HTML template for products -->
+<script id="product-template" type="text/template">
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-2">
+                <img src="<?=DOCUMENT_STATIC.DS?>images/<%= img %>" width="35px" height="35px">
+            </div>
+            <div class="col-5">
+                <%= name %>
+            </div>
+            <div class="col-3">
+                qnt <%= price %> руб.
+            </div>
+            <div class="col-2 text-center text-danger h4">
+                <a class="btn-del_product-to-catr" data-id="<%= id %>"><i class="fa fa-times" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </li>
+</script>

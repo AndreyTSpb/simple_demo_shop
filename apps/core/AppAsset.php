@@ -30,7 +30,8 @@ class AppAsset{
         'js/popper.min.js',
         'js/holder.min.js',
         'js/custom/add_product_to_cart.js',
-        'js/custom/view_cart.js'
+        'js/custom/view_cart.js',
+        'js/underscore-min.js'
 
     ];
 
