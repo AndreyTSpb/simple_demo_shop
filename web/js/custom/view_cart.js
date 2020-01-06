@@ -9,37 +9,6 @@ document.addEventListener("DOMContentLoaded", function() {
          products = "";
 
     /**
-     * Проверка есть ли чего нибуть в куках корзины,
-     * если есть заполняем глобальную переменную  products
-     */
-    function testCart() {
-
-        let arr_cookie = document.cookie.split(";"); // куки в массив через разделитель
-        let cart = "";
-
-        // удалим пробельные символы (если они, вдруг, есть) в начале и в конце у каждой куки
-        for (let j=0; j<arr_cookie.length; j++) {
-            arr_cookie[j] = arr_cookie[j].replace(/(\s*)\B(\s*)/g, '');
-        }
-
-        //  ищем куку с корзиной
-        arr_cookie.forEach(function (val, key) {
-            if(val.match(/cart=(.+?)/)){
-                // преобразуем строчку в масив через разделител "="
-                //отделяем имя куки в нулевой элемент массива , а значение куки в первый элемент
-                cart = arr_cookie[key].split('=');
-            }
-        });
-        console.log(cart.length);
-        if(cart.length > 0){
-            products = JSON.parse(cart[1]);
-            //console.log(products);
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * Отсюда запускаем все функции для посмотра и управления корзиной
      */
     function showCart() {
@@ -289,6 +258,35 @@ document.addEventListener("DOMContentLoaded", function() {
                     break;
             }
         });
+    }
+
+    /**
+     * Проверка есть ли чего нибуть в куках корзины,
+     * если есть заполняем глобальную переменную  products
+     */
+    function testCart() {
+
+        let arr_cookie = document.cookie.split(";"); // куки в массив через разделитель
+        let cart = "";
+
+        // удалим пробельные символы (если они, вдруг, есть) в начале и в конце у каждой куки
+        for (let j=0; j<arr_cookie.length; j++) {
+            arr_cookie[j] = arr_cookie[j].replace(/(\s*)\B(\s*)/g, '');
+        }
+
+        //  ищем куку с корзиной
+        arr_cookie.forEach(function (val, key) {
+            if(val.match(/cart=(.+?)/)){
+                // преобразуем строчку в масив через разделител "="
+                //отделяем имя куки в нулевой элемент массива , а значение куки в первый элемент
+                cart = arr_cookie[key].split('=');
+            }
+        });
+        if(cart.length > 0){
+            products = JSON.parse(cart[1]); //парсим  JSON в массив
+            return true;
+        }
+        return false;
     }
 
 
