@@ -8,7 +8,7 @@
 ?>
 <!-- Modal -->
 <div class="modal fade" id="modal-shop-cart" tabindex="-1" role="dialog" aria-labelledby="modal-shop-cart" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenterTitle"><i class="fa fa-shopping-basket"></i>   Корзина</h5>
@@ -23,11 +23,14 @@
                             <div class="col-2 border-right border-white">
                                 Изо.
                             </div>
-                            <div class="col-5 border-right border-white">
-                                Наименование
+                            <div class="col-3 border-right border-white">
+                                Наиме-ние
                             </div>
                             <div class="col-3 border-right border-white">
                                 Кол.
+                            </div>
+                            <div class="col-2 border-right border-white">
+                                Цена
                             </div>
                             <div class="col-2">
                                 Уд-ть
@@ -60,17 +63,30 @@
 <script id="product-template" type="text/template">
     <li class="list-group-item" id="row-<%= id %>">
         <div class="row">
-            <div class="col-2">
+            <div class="col-2 text-center">
                 <img src="<?=DOCUMENT_STATIC.DS?>images/<%= img %>" width="35px" height="35px">
             </div>
-            <div class="col-5">
+            <div class="col-3">
                 <%= name %>
             </div>
-            <div class="col-3">
-                <%= qrt %> x <%= price %> <i class="fa fa-rub"></i>
+            <div class="col-3 text-center">
+                <span class="input-group-btn">
+                      <button type="button" class="btn btn-default btn-number btn-sm pl-0 pr-0"  data-type="minus" data-id = "<%= id %>" data-field="quant[2]">
+                        <i class="fa fa-minus"></i>
+                      </button>
+                </span>
+                <span class="qrt"><%= qrt %></span>
+                <span class="input-group-btn">
+                      <button type="button" class="btn btn-default btn-number btn-sm pl-0 pr-0" data-type="plus" data-id = "<%= id %>" data-field="quant[2]">
+                          <span class="fa fa-plus"></span>
+                      </button>
+                </span>
+            </div>
+            <div class="col-2 text-right">
+                <%= price %>
             </div>
             <div class="col-2 text-center text-danger h4">
-                <i class="fa fa-times btn-del_product-to-cart cursor-pointer" data-id="<%= id %>" aria-hidden="true"></i>
+                <i class="fa fa-times btn-del_product-to-cart cursor-pointer " data-id="<%= id %>" aria-hidden="true"></i>
             </div>
         </div>
     </li>

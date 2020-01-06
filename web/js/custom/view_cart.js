@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
-    //Создаем глобальную переменную с корзиной чтобы 10 раз не вызывать ее
+    /**
+     * Создаем глобальную переменную с корзиной чтобы 10 раз не вызывать ее
+     * И обЪявляем глобальную переменную продукты, чтобы ее не искать лишний раз
+     */
     let  cart_modal = document.querySelector('#modal-shop-cart'),
+         cartBody = document.getElementById('cart-body'),
+         list_products = document.getElementById('list-products'),
          products = "";
 
     /**
@@ -40,6 +45,8 @@ document.addEventListener("DOMContentLoaded", function() {
     function showCart() {
         //если карзина не пуста то можно ее показать
         if(testCart()) {  //проверяем куки и если они есть заполняем корзину
+
+            plusMinusProduct(); // функция для увеличение/уменьшения количества товара
 
             removeItem(); // функция для удаления ненужного товара
 
@@ -123,7 +130,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     /**
      * Выборка из куки корзины
-     *
+     * Заполняем в файле cart.php шаблон строками
+     * Обязательно подключение underscore-min.js
      */
     function getCart() {
         /**
@@ -166,39 +174,123 @@ document.addEventListener("DOMContentLoaded", function() {
      * 6)
      */
     function removeItem() {
-        let cartBody = document.getElementById('cart-body'),
-            remove_item;
-
         cartBody.addEventListener('click', function (e) {
             let target = e.target;
             if(target && target.classList.contains('btn-del_product-to-cart')){
                 e.preventDefault();
                 //получаем айди продукта
                 let id = target.getAttribute('data-id');
-                products.forEach(function (product, key) {
 
-                    if(product.id === id){
+                removRow(id); //
 
-                        //запоминаем ключ удаляемого элемента
-                        remove_item = key;
-
-                    }
-
-                });
-
-                //удаляем ненужный элемент из масива продуктов
-                products.splice(remove_item,1);
-
-                //закидываем масив в куки
-                document.cookie = 'cart='+JSON.stringify(products); // обновляем куку с корзиной
-
-                // удаляем строчку из визуального отображения
-                let rem_row = document.getElementById("row-"+id);
-                rem_row.parentNode.removeChild(rem_row);
             }
         });
     }
-    
+
+    /**
+     * механизм удаления строчки с экрана и из кук
+     * получает id удаляемого товаа
+     */
+    function removRow(id) {
+        let remove_item = '';
+        products.forEach(function (product, key) {
+            if(product.id === id){
+                //запоминаем ключ удаляемого элемента
+                remove_item = key;
+            }
+        });
+
+        if(!remove_item.length) return false;
+        //удаляем ненужный элемент из масива продуктов
+        products.splice(remove_item,1);
+
+        if(products.length < 1){
+            document.cookie = 'cart=; path=/; expires=-1';
+        }
+        //закидываем масив в куки
+        document.cookie = 'cart='+JSON.stringify(products); // обновляем куку с корзиной
+
+        // удаляем строчку из визуального отображения
+        let rem_row = document.getElementById("row-"+id);
+        rem_row.parentNode.removeChild(rem_row);
+    }
+
+    /**
+     * Увеличение количства товара на 1 ед.
+     */
+    function plusProduct(id) {
+        products.forEach(function (item) {
+            if(item['id'] === id){
+                item['qrt'] ++; //увеличиваем количество на 1
+            }
+        });
+        document.cookie = 'cart='+JSON.stringify(products); // обновляем куку с корзиной
+    }
+
+    /**
+     * Уменьшение количства товара на 1 ед.
+     */
+    function minusProduct(id) {
+        products.forEach(function (item) {
+            if(item['id'] === id){
+                item['qrt'] --; //увеличиваем количество на 1
+            }
+        });
+        document.cookie = 'cart='+JSON.stringify(products); // обновляем куку с корзиной
+    }
+
+    /**
+     * плюс минус единица товара
+     * Увеличения/уменьшение количества товара в корзине
+     *
+     */
+    function plusMinusProduct() {
+        // отслеживание куда нажади
+        // если минус то ищим следующий элемент и увеличиваем его на 1
+        // если плюс то предыдущий элемент ищем
+        // запись в куки
+        list_products.addEventListener('click', function (e) {
+            let target = e.target, //
+                parent = target.parentElement,
+                qrt = 0, qrt_html = '',
+                id;
+            // Проверка куда жмем
+            if(!target || parent.tagName !== "BUTTON"){
+                if(!target.parentElement.classList.contains('btn-number')){
+                    return false;
+                }
+            }
+            id = parent.getAttribute('data-id');
+            switch (parent.getAttribute('data-type')){
+                case "minus":
+                    qrt_html = target.parentElement.parentElement.nextElementSibling;
+                    if(qrt_html.classList.contains('qrt')){
+                        qrt = +qrt_html.textContent;
+                        qrt --;
+                        if(qrt > 0){
+                            qrt_html.textContent = qrt;
+                            minusProduct(id);
+                        }else{
+                            //если ноль то удалить строчку
+                            removRow(id);
+                        }
+                    }
+                    break;
+                case "plus":
+                    qrt_html = target.parentElement.parentElement.previousElementSibling;
+                    if(qrt_html.classList.contains('qrt')){
+                        qrt = +qrt_html.textContent;
+                        qrt ++;
+                        if(qrt > 0){
+                            qrt_html.textContent = qrt;
+                            plusProduct(id);
+                        }
+                    }
+                    break;
+            }
+        });
+    }
+
 
     /**
      * кнопка для вызова корзины
